@@ -10,6 +10,7 @@ import { addDoc, collection, deleteDoc, doc, getDocs } from "firebase/firestore"
 import { HomeContext } from "../context/context";
 
 const Home = () => {
+  const [money, setMoney] = useState(0);
   const [name, setName] = useState("");
   const [task, setTask] = useState("");
   const [income, setIncome] = useState(0);
@@ -17,18 +18,26 @@ const Home = () => {
   const [date, setDate] = useState(new Date());
 
   const [users, setUsers] = useState([]);
-  console.log("helçö", users);
   const userCollectionRef = collection(db, "users");
 
-  const createUser = async () => {
+  const createUser = async (e) => {
+    e.preventDefault();
     await addDoc(userCollectionRef, {
       name: name,
       task: task,
       income: Number(income),
       expence: Number(expence),
-      date: Date(date),
+      date: date,
     });
   };
+
+  useEffect(() => {
+    const getUser = async () => {
+      const data = await getDocs(userCollectionRef);
+      setUsers(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
+    };
+    getUser();
+  }, []);
 
   // const updateUser = async (id, name, task, income, expence, date) => {
   //   await userCollectionRef.doc(id).update({
@@ -62,13 +71,7 @@ const Home = () => {
     deleteUser
   };
 
-  useEffect(() => {
-    const getUser = async () => {
-      const data = await getDocs(userCollectionRef);
-      setUsers(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
-    };
-    getUser();
-  }, []);
+
 
   return (
     <HomeContext.Provider value={state}>

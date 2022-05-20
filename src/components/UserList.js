@@ -3,12 +3,13 @@ import { HomeContext, useContext } from "../context/context";
 
 const UserList = () => {
   const { users, setUsers } = useContext(HomeContext);
+  const { date, setDate } = useContext(HomeContext);
+  // console.log("a", date.toString("tr-TR"));
   const { deleteUser } = useContext(HomeContext);
-  console.log("bu", users);
   return (
     <div className="bg-white p-5 rounded-lg mt-5 mb-5">
       <div className="w-full flex flex-row bg-white p-5 border-b font-semibold text-xl text-center">
-        <span className="basis-1/4">Tarih</span>
+        <span className="basis-1/4"> Tarih </span>
         <span className="basis-1/4">isim</span>
         <span className="basis-1/4">Görev</span>
         <span className="basis-1/4">Gelir</span>
@@ -21,7 +22,7 @@ const UserList = () => {
             key={index}
             className="w-full flex flex-row bg-white p-5 border-b text-center"
           >
-            <span className="basis-1/4">Tarih</span>
+            <span className="basis-1/4"> {user.date.toString()} </span>
             <span className="basis-1/4">{user.name}</span>
             <span className="basis-1/4">{user.task}</span>
             <span className="basis-1/4">{user.income}</span>

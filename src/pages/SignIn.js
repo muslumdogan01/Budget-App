@@ -24,7 +24,7 @@ const SignIn = () => {
   // }
   return (
     <div>
-      <button>Giriş Yap</button>
+     
     </div>
   )
 }

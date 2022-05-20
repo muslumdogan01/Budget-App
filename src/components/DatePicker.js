@@ -3,6 +3,7 @@ import { HomeContext, useContext } from "../context/context";
 
 const DatePicker = () => {
   const { date, setDate } = useContext(HomeContext);
+  console.log('tarih:', date)
 
   return (
     <div class="relative">
