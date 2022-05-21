@@ -16,10 +16,10 @@ const UserList = () => {
         <span className="basis-1/4">Gider</span>
         <span className="basis-1/4"></span>
       </div>
-      {users.map((user, index) => {
+      {users.map((user, id) => {
         return (
           <div
-            key={index}
+            key={id}
             className="w-full flex flex-row bg-white p-5 border-b text-center"
           >
             <span className="basis-1/4"> {user.date.toString()} </span>
