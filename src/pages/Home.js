@@ -47,7 +47,7 @@ const Home = () => {
       setIncome(0);
       setExpence(0);
     } else {
-      alert("Please fill all the fields");
+      alert("Lütfen zorunlu alanları doldurunuz!");
     }
 
     setLoading(false);
